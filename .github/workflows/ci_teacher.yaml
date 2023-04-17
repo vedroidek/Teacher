@@ -1,0 +1,32 @@
+#----------------
+# vedroidek
+#----------------
+name: django_teacher_app_ci
+
+env:
+  APPLICATION_NAME: "Teacher"
+  COMMIT_NUMBER: "${{ github.sha }}"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main_depends:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check changes
+        uses: actions/checkout@v3
+
+      - name: install python3
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip && echo "Done"
+          pip install -r requirements.txt && echo "Done"
