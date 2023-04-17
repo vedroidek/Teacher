@@ -6,6 +6,7 @@ name: django_teacher_app_ci
 env:
   APPLICATION_NAME: "Teacher"
   COMMIT_NUMBER: "${{ github.sha }}"
+  TIMESTAMP: "${{ echo data +%d/%m/%Y_%H:%M:%S }}"
 
 on:
   push:
@@ -21,7 +22,7 @@ jobs:
       - name: Check changes
         uses: actions/checkout@v3
 
-      - name: install python3
+      - name: install python3.10.6
         uses: actions/setup-python@v3
         with:
           python-version: '3.x'
