@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
-from manager import UserManager
+from .manager import UserManager
 
 
 class User(AbstractUser):
@@ -13,7 +13,7 @@ class User(AbstractUser):
         ('parent', 'parent'),
         ('oth', 'other'),
     )
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = []
     objects = UserManager()
     USERNAME_FIELD = 'email'
     email = models.EmailField(_('email'), unique=True)
@@ -23,8 +23,8 @@ class User(AbstractUser):
     username = models.CharField(_('username'),
                                 max_length=50,
                                 error_messages={'unique': _("A user with that username already exists.")},
-                                help_text='No more than 50 characters',
-                                validators=UnicodeUsernameValidator())
+                                help_text='No more than 50 characters')
+    username_validator = UnicodeUsernameValidator()
 
     def __str__(self) -> str:
         return f'{self.first_name}, id = {self.pk}'
