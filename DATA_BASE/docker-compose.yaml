@@ -8,6 +8,6 @@ services:
     ports:
       - "8080:5432"
     environment:
-      POSTGRES_USER: maxim
-      POSTGRES_PASSWORD: 0912
-      POSTGRES_DB: teacher
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
