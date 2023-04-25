@@ -45,7 +45,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, CustomUserManager):
                               choices=GENDER_CHOICES,
                               help_text=r"'f'emale or 'm'ale",
                               blank=False, null=False)
-    is_admin = models.BooleanField(_('is_admin'),
+    is_staff = models.BooleanField(_('is_admin'),
                                    default=False,
                                    editable=False)
     created_at = models.DateTimeField(_('created_at'),
