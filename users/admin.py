@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from django.contrib.auth import get_user_model
+
+CustomUser = get_user_model()
+
+
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ['email', 'username', 'user_type', 'first_name', 'last_name', 'gender', 'created_at']
+    list_filter = ['created_at']
+    date_hierarchy = 'created_at'
+    ordering = ['email']
