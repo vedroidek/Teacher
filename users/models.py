@@ -39,7 +39,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, CustomUserManager):
                                  choices=USER_STATUS_CHOICES,
                                  max_length=6,
                                  blank=False,
-                                 null=True),
+                                 null=True)
     gender = models.CharField(_('gender'),
                               max_length=1,
                               choices=GENDER_CHOICES,
@@ -71,3 +71,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, CustomUserManager):
         verbose_name_plural = "Users list"
         ordering = ['username', 'email']
         db_table = 'users'
+        indexes = [
+            models.Index(fields=['-created_at']),
+        ]
