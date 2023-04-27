@@ -7,7 +7,7 @@ CustomUser = get_user_model()
 
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ['email', 'username', 'user_type', 'first_name', 'last_name', 'gender', 'created_at']
+    list_display = ['email', 'username', 'user_type', 'created_at']
     list_filter = ['created_at']
     date_hierarchy = 'created_at'
     ordering = ['email']
