@@ -8,6 +8,8 @@ docker-compose.yaml
 t.py
 # C extensions
 *.so
+.gitignore
+static/
 
 # Distribution / packaging
 .Python
