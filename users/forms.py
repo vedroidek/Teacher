@@ -5,10 +5,6 @@ from .models import CustomUser
 
 class CustomUserCreationForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.queryset = get_user_model().objects.exclude(is_superuser=True)
-
     email = forms.EmailField(min_length=10, label='e-mail address', required=True,
                              widget=forms.EmailInput)
     username = forms.CharField(max_length=150, min_length=3, required=True,
@@ -20,6 +16,7 @@ class CustomUserCreationForm(forms.ModelForm):
     password = forms.CharField(label='password', widget=forms.PasswordInput())
     password_confirm = forms.CharField(label='password_confirm', widget=forms.PasswordInput())
 
+    # set a nice field order
     field_order = ('username', 'email', 'user_type', 'password', 'password_confirm')
 
     def clean(self):
